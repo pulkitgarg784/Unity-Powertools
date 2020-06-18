@@ -11,20 +11,19 @@ public class PowerTools : Editor
     private static void Group()
     {
 
-        GameObject ParentObj = new GameObject("Parent");
+        GameObject parentObj = new GameObject("Parent");
         GameObject[] objsToGroup = Selection.gameObjects;
-        //Undo.RecordObjects(objsToGroup,"group");
-        Undo.RegisterCompleteObjectUndo(objsToGroup, "Group");
+
         for (int i = 0; i < objsToGroup.Length; i++)
         {
             if (objsToGroup[i].transform.parent == null)
             {
-                objsToGroup[i].transform.SetParent(ParentObj.transform);
+                objsToGroup[i].transform.SetParent(parentObj.transform);
 
             }
             else
             {
-                DestroyImmediate(ParentObj);
+                DestroyImmediate(parentObj);
             }
         }
         
